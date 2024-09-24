@@ -20,7 +20,6 @@ import { ConfigService } from './config/config.service';
         if (dbConfig.logging) {
           dbConfig.logging = new Logger('orm', { timestamp: true });
         }
-        dbConfig.en;
         return dbConfig;
       },
     }),
