@@ -1,4 +1,10 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  BeforeInsert,
+  BeforeUpdate,
+} from 'typeorm';
 
 @Entity('t_user')
 export class User {
@@ -16,4 +22,21 @@ export class User {
 
   @Column()
   birthday: Date;
+
+  @Column()
+  createTime: Date;
+
+  @BeforeInsert()
+  setCreatedAt() {
+    this.createTime = new Date();
+    this.updateTime = new Date();
+  }
+
+  @Column()
+  updateTime: Date;
+
+  @BeforeUpdate()
+  setUpdatedAt() {
+    this.updateTime = new Date();
+  }
 }
