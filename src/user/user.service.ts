@@ -17,4 +17,8 @@ export class UserService {
   findOne(id: string): Promise<User | null> {
     return this.userRepository.findOneBy({ id });
   }
+
+  findUserPage(): Promise<[User[], number]> {
+    return this.userRepository.findAndCount();
+  }
 }
